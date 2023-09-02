@@ -22,13 +22,20 @@ missing_feature = 0  # You can change this to an appropriate default value
 
 submit = st.button("Predict")
 if submit:
-    with open("knn_model.pkl", "rb") as f:
-        knn_model = pickle.load(f)
+    try:
+        with open("knn_model.pkl", "rb") as f:
+            knn_model = pickle.load(f)
+    except FileNotFoundError:
+        st.error("Model file 'knn_model.pkl' not found. Please make sure it exists in the correct location.")
+    except Exception as e:
+        st.error(f"An error occurred while loading the model: {str(e)}")
 
     # Prepare the input data with the missing feature
     input_data = [[sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal, missing_feature]]
 
     # Predict heart disease
-    output = knn_model.predict(input_data)
-
-    st.success("Predicted Heart Disease (0 for No, 1 for Yes): " + str(output[0]))
+    try:
+        output = knn_model.predict(input_data)
+        st.success("Predicted Heart Disease (0 for No, 1 for Yes): " + str(output[0]))
+    except Exception as e:
+        st.error(f"An error occurred while making predictions: {str(e)}")
