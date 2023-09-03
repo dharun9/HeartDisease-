@@ -6,4 +6,3 @@ scikit-learn
 dataclasses
 sklearn
 streamlit
--e .
