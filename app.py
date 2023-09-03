@@ -18,6 +18,7 @@ except Exception as e:
 
 # Function to make predictions
 def predict_heart_disease(sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal, missing_feature):
+    global knn_model
     # Prepare the input data
     input_data = np.array([[sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal, missing_feature]])
     
