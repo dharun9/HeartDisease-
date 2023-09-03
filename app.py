@@ -11,6 +11,8 @@ st.title("Heart Disease Prediction")
 try:
     with open("knn_model.pkl", "rb") as f:
         knn_model = pickle.load(f)
+
+    st.success("hello world")
 except FileNotFoundError:
     st.error("Model file 'knn_model.pkl' not found. Please make sure it exists in the correct location.")
 except Exception as e:
