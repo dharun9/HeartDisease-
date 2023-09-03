@@ -4,5 +4,6 @@ seaborn
 matplotlib
 scikit-learn
 dataclasses
+sklearn
 streamlit
 -e .
